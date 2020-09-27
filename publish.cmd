@@ -1,3 +1,3 @@
 nuget restore
-msbuild EchoBot.sln -p:DeployOnBuild=true -p:PublishProfile=.\mirceaweatherappbot-Web-Deploy.pubxml -p:Password=p0pKbvr6fCiXnvYKNBgm4bo3bw7oJo34AFFc63vzePQiJefDHoD6TPb6dD9k
+msbuild CoreBot.sln -p:DeployOnBuild=true -p:PublishProfile=.\weatherchatbotapp-Web-Deploy.pubxml -p:Password=pYcj84cTRvrPiGroZZJphuRslRDc85mj4alQ0hxcdvTHguFeXrseK0ne4Log
 
