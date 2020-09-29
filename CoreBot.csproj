@@ -5,6 +5,7 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'BasicBot' " />
   <ItemGroup>
     <Content Remove="Cards\welcomeCard.json" />
   </ItemGroup>
@@ -21,6 +22,9 @@
     <PackageReference Include="Microsoft.Recognizers.Text.DataTypes.TimexExpression" Version="1.3.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="WeatherMockApi\" />
+  </ItemGroup>
   <Import Project="PostDeployScripts\IncludeSources.targets" Condition="Exists('PostDeployScripts\IncludeSources.targets')" />
   <Import Project="..\PostDeployScripts\IncludeSources.targets" Condition="Exists('..\PostDeployScripts\IncludeSources.targets')" />
   

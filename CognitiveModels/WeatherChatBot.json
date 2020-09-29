@@ -1,0 +1,145 @@
+{
+  "luis_schema_version": "7.0.0",
+  "intents": [
+    {
+      "name": "GetWeather",
+      "features": []
+    },
+    {
+      "name": "None",
+      "features": []
+    }
+  ],
+  "entities": [],
+  "hierarchicals": [],
+  "composites": [
+    {
+      "name": "From",
+      "children": [
+        "City"
+      ],
+      "roles": [],
+      "features": []
+    },
+    {
+      "name": "To",
+      "children": [
+        "City"
+      ],
+      "roles": [],
+      "features": []
+    }
+  ],
+  "closedLists": [
+    {
+      "name": "City",
+      "subLists": [
+        {
+          "canonicalForm": "Paris",
+          "list": [
+            "paris",
+            "cdg"
+          ]
+        },
+        {
+          "canonicalForm": "London",
+          "list": [
+            "london",
+            "lhr"
+          ]
+        },
+        {
+          "canonicalForm": "Berlin",
+          "list": [
+            "berlin",
+            "txl"
+          ]
+        },
+        {
+          "canonicalForm": "New York",
+          "list": [
+            "new york",
+            "jfk"
+          ]
+        },
+        {
+          "canonicalForm": "Seattle",
+          "list": [
+            "seattle",
+            "sea"
+          ]
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "prebuiltEntities": [
+    {
+      "name": "datetimeV2",
+      "roles": []
+    }
+  ],
+  "utterances": [
+    {
+      "text": "book a hotel in new york",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "book a restaurant",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "find an airport near me",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "i'd like to rent a car",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "weather paris",
+      "intent": "GetWeather",
+      "entities": []
+    },
+    {
+      "text": "what's the forecast for this friday?",
+      "intent": "GetWeather",
+      "entities": []
+    },
+    {
+      "text": "what's the weather like for tomorrow",
+      "intent": "GetWeather",
+      "entities": []
+    },
+    {
+      "text": "what's the weather like in new york",
+      "intent": "GetWeather",
+      "entities": []
+    },
+    {
+      "text": "what's the weather like?",
+      "intent": "GetWeather",
+      "entities": []
+    },
+    {
+      "text": "winter is coming",
+      "intent": "None",
+      "entities": []
+    }
+  ],
+  "versionId": "0.1",
+  "name": "WeatherChatBotApp-bdf7",
+  "desc": "Luis Model for CoreBot",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "phraselists": [],
+  "regex_features": [],
+  "patterns": [],
+  "settings": []
+}

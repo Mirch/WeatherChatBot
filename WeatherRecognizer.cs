@@ -9,13 +9,16 @@ using Microsoft.Extensions.Configuration;
 
 namespace Microsoft.BotBuilderSamples
 {
-    public class FlightBookingRecognizer : IRecognizer
+    public class WeatherRecognizer : IRecognizer
     {
         private readonly LuisRecognizer _recognizer;
 
-        public FlightBookingRecognizer(IConfiguration configuration)
+        public WeatherRecognizer(IConfiguration configuration)
         {
-            var luisIsConfigured = !string.IsNullOrEmpty(configuration["LuisAppId"]) && !string.IsNullOrEmpty(configuration["LuisAPIKey"]) && !string.IsNullOrEmpty(configuration["LuisAPIHostName"]);
+            var luisIsConfigured =
+                !string.IsNullOrEmpty(configuration["LuisAppId"])
+                && !string.IsNullOrEmpty(configuration["LuisAPIKey"])
+                && !string.IsNullOrEmpty(configuration["LuisAPIHostName"]);
             if (luisIsConfigured)
             {
                 var luisApplication = new LuisApplication(
