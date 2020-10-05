@@ -6,5 +6,7 @@ namespace CoreBot.WeatherMockApi
         public int Temperature { get; set; }
 
         public string Description { get; set; }
+
+        public int WindSpeed { get; set; }
     }
 }

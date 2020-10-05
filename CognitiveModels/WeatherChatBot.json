@@ -2,7 +2,27 @@
   "luis_schema_version": "7.0.0",
   "intents": [
     {
+      "name": "GetTemperature",
+      "features": []
+    },
+    {
       "name": "GetWeather",
+      "features": []
+    },
+    {
+      "name": "GetWindSpeed",
+      "features": []
+    },
+    {
+      "name": "IsItRaining",
+      "features": []
+    },
+    {
+      "name": "IsitSnowing",
+      "features": []
+    },
+    {
+      "name": "IsItSunny",
       "features": []
     },
     {
@@ -12,24 +32,7 @@
   ],
   "entities": [],
   "hierarchicals": [],
-  "composites": [
-    {
-      "name": "From",
-      "children": [
-        "City"
-      ],
-      "roles": [],
-      "features": []
-    },
-    {
-      "name": "To",
-      "children": [
-        "City"
-      ],
-      "roles": [],
-      "features": []
-    }
-  ],
+  "composites": [],
   "closedLists": [
     {
       "name": "City",
@@ -81,6 +84,11 @@
   ],
   "utterances": [
     {
+      "text": "berlin sunny",
+      "intent": "IsItSunny",
+      "entities": []
+    },
+    {
       "text": "book a hotel in new york",
       "intent": "None",
       "entities": []
@@ -91,8 +99,23 @@
       "entities": []
     },
     {
+      "text": "cloudy seattle",
+      "intent": "IsItSunny",
+      "entities": []
+    },
+    {
       "text": "find an airport near me",
       "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "how is it in berlin",
+      "intent": "IsItSunny",
+      "entities": []
+    },
+    {
+      "text": "how is it in seattle",
+      "intent": "IsItSunny",
       "entities": []
     },
     {
@@ -101,13 +124,133 @@
       "entities": []
     },
     {
+      "text": "is it cloudy in new york",
+      "intent": "IsItSunny",
+      "entities": []
+    },
+    {
+      "text": "is it raining",
+      "intent": "IsItRaining",
+      "entities": []
+    },
+    {
+      "text": "is it raining in paris",
+      "intent": "IsItRaining",
+      "entities": []
+    },
+    {
+      "text": "is it snowing",
+      "intent": "IsitSnowing",
+      "entities": []
+    },
+    {
+      "text": "is it snowing in berlin",
+      "intent": "IsitSnowing",
+      "entities": []
+    },
+    {
+      "text": "is it sunny in london",
+      "intent": "IsItSunny",
+      "entities": []
+    },
+    {
+      "text": "is it windy",
+      "intent": "GetWindSpeed",
+      "entities": []
+    },
+    {
+      "text": "is it windy in paris",
+      "intent": "GetWindSpeed",
+      "entities": []
+    },
+    {
+      "text": "is the weather sunny in paris",
+      "intent": "IsItSunny",
+      "entities": []
+    },
+    {
+      "text": "rain seattle",
+      "intent": "IsItRaining",
+      "entities": []
+    },
+    {
+      "text": "raining new york",
+      "intent": "IsItRaining",
+      "entities": []
+    },
+    {
+      "text": "rainy berlin",
+      "intent": "IsItRaining",
+      "entities": []
+    },
+    {
+      "text": "seattle cloudy",
+      "intent": "IsItSunny",
+      "entities": []
+    },
+    {
+      "text": "snow new york",
+      "intent": "IsitSnowing",
+      "entities": []
+    },
+    {
+      "text": "snow paris",
+      "intent": "IsitSnowing",
+      "entities": []
+    },
+    {
+      "text": "sunny new york",
+      "intent": "IsItSunny",
+      "entities": []
+    },
+    {
+      "text": "temperature london",
+      "intent": "GetTemperature",
+      "entities": []
+    },
+    {
+      "text": "temperature new york",
+      "intent": "GetTemperature",
+      "entities": []
+    },
+    {
+      "text": "weather berlin",
+      "intent": "GetWeather",
+      "entities": []
+    },
+    {
+      "text": "weather london",
+      "intent": "GetWeather",
+      "entities": []
+    },
+    {
+      "text": "weather new york",
+      "intent": "GetWeather",
+      "entities": []
+    },
+    {
       "text": "weather paris",
       "intent": "GetWeather",
       "entities": []
     },
     {
+      "text": "weather seattle",
+      "intent": "GetWeather",
+      "entities": []
+    },
+    {
+      "text": "what is the temperature in seattle",
+      "intent": "GetTemperature",
+      "entities": []
+    },
+    {
       "text": "what's the forecast for this friday?",
       "intent": "GetWeather",
+      "entities": []
+    },
+    {
+      "text": "what's the temperature in london",
+      "intent": "GetTemperature",
       "entities": []
     },
     {
@@ -123,6 +266,26 @@
     {
       "text": "what's the weather like?",
       "intent": "GetWeather",
+      "entities": []
+    },
+    {
+      "text": "what's the wind speed",
+      "intent": "GetWindSpeed",
+      "entities": []
+    },
+    {
+      "text": "what's the wind speed in seattle",
+      "intent": "GetWindSpeed",
+      "entities": []
+    },
+    {
+      "text": "wind speed new york",
+      "intent": "GetWindSpeed",
+      "entities": []
+    },
+    {
+      "text": "windy berlin",
+      "intent": "GetWindSpeed",
       "entities": []
     },
     {

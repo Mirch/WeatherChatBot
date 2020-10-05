@@ -10,22 +10,26 @@ namespace CoreBot.WeatherMockApi
             new WeatherInfo
             {
                 Description = "sunny",
-                Temperature = 20
+                Temperature = 20,
+                WindSpeed = 5
             },
             new WeatherInfo
             {
                 Description = "cloudy",
-                Temperature = 10
+                Temperature = 10,
+                WindSpeed = 9
             },
             new WeatherInfo
             {
                 Description = "raining",
-                Temperature = 15
+                Temperature = 15,
+                WindSpeed = 13
             },  
             new WeatherInfo
             {
                 Description = "snowing",
-                Temperature = -6
+                Temperature = -6,
+                WindSpeed = 4
             },
 
         };

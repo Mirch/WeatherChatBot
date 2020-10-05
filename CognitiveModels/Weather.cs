@@ -10,7 +10,7 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.AI.Luis;
 namespace Luis
 {
-    public partial class Weather : IRecognizerConvert
+    public partial class Weather: IRecognizerConvert
     {
         [JsonProperty("text")]
         public string Text;
@@ -18,9 +18,13 @@ namespace Luis
         [JsonProperty("alteredText")]
         public string AlteredText;
 
-        public enum Intent
-        {
-            GetWeather,
+        public enum Intent {
+            GetTemperature, 
+            GetWeather, 
+            GetWindSpeed, 
+            IsItRaining, 
+            IsitSnowing, 
+            IsItSunny, 
             None
         };
         [JsonProperty("intents")]
@@ -35,37 +39,10 @@ namespace Luis
             // Lists
             public string[][] City;
 
-            // Composites
-            public class _InstanceFrom
-            {
-                public InstanceData[] City;
-            }
-            public class FromClass
-            {
-                public string[][] City;
-                [JsonProperty("$instance")]
-                public _InstanceFrom _instance;
-            }
-            public FromClass[] From;
-
-            public class _InstanceTo
-            {
-                public InstanceData[] City;
-            }
-            public class ToClass
-            {
-                public string[][] City;
-                [JsonProperty("$instance")]
-                public _InstanceTo _instance;
-            }
-            public ToClass[] To;
-
             // Instance
             public class _Instance
             {
                 public InstanceData[] City;
-                public InstanceData[] From;
-                public InstanceData[] To;
                 public InstanceData[] datetime;
             }
             [JsonProperty("$instance")]
@@ -75,14 +52,11 @@ namespace Luis
         public _Entities Entities;
 
         [JsonExtensionData(ReadData = true, WriteData = true)]
-        public IDictionary<string, object> Properties { get; set; }
+        public IDictionary<string, object> Properties {get; set; }
 
         public void Convert(dynamic result)
         {
-            var app = JsonConvert.DeserializeObject<Weather>(
-                JsonConvert.SerializeObject(
-                    result,
-                    new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }));
+            var app = JsonConvert.DeserializeObject<Weather>(JsonConvert.SerializeObject(result, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }));
             Text = app.Text;
             AlteredText = app.AlteredText;
             Intents = app.Intents;
