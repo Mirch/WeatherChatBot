@@ -159,9 +159,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            // Restart the main dialog with a different message the second time around
-            var promptMessage = "What else can I do for you?";
-            return await stepContext.ReplaceDialogAsync(InitialDialogId, promptMessage, cancellationToken);
+            return await stepContext.ReplaceDialogAsync(InitialDialogId, cancellationToken);
         }
     }
 }
