@@ -22,8 +22,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly WeatherMockApi _weatherApi;
         protected readonly ILogger Logger;
 
-        private readonly WeatherInfo _weatherInfoMock;
-
         // Dependency injection uses this constructor to instantiate MainDialog
         public MainDialog(
             WeatherRecognizer luisRecognizer,
@@ -34,8 +32,6 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             _luisRecognizer = luisRecognizer;
             _weatherApi = weatherApi;
             Logger = logger;
-
-            _weatherInfoMock = _weatherApi.GetMockWeatherInfo();
 
             AddDialog(new TextPrompt(nameof(TextPrompt)));
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
@@ -75,27 +71,28 @@ namespace Microsoft.BotBuilderSamples.Dialogs
 
             // Call LUIS and gather any potential booking details. (Note the TurnContext has the response to the prompt.)
             var luisResult = await _luisRecognizer.RecognizeAsync<Weather>(stepContext.Context, cancellationToken);
+            var city = luisResult.Entities.City[0][0];
+            var weatherInfo = _weatherApi.GetMockWeatherInfo(city);
             switch (luisResult.TopIntent().intent)
             {
                 case Weather.Intent.GetWeather:
-                    var weatherInfo = _weatherApi.GetMockWeatherInfo();
-                    var getWeatherMessageText = $"It's {_weatherInfoMock.Description}, with a temerature of {weatherInfo.Temperature} degrees.";
+                    var getWeatherMessageText = $"It's {weatherInfo.Description}, with a temerature of {weatherInfo.Temperature} degrees.";
                     var getWeatherMessage = MessageFactory.Text(getWeatherMessageText, getWeatherMessageText, InputHints.IgnoringInput);
                     await stepContext.Context.SendActivityAsync(getWeatherMessage, cancellationToken);
                     break;
                 case Weather.Intent.GetTemperature:
-                    var getTemperatureMessageText = $"There are {_weatherInfoMock.Temperature} degrees outside.";
+                    var getTemperatureMessageText = $"There are {weatherInfo.Temperature} degrees outside.";
                     var getTemperatureMessage = MessageFactory.Text(getTemperatureMessageText, getTemperatureMessageText, InputHints.IgnoringInput);
                     await stepContext.Context.SendActivityAsync(getTemperatureMessage, cancellationToken);
                     break;
                 case Weather.Intent.GetWindSpeed:
-                    var getWindSpeedMessageText = $"The wind speed is {_weatherInfoMock.WindSpeed} m/s.";
+                    var getWindSpeedMessageText = $"The wind speed is {weatherInfo.WindSpeed} m/s.";
                     var getWindSpeedMessage = MessageFactory.Text(getWindSpeedMessageText, getWindSpeedMessageText, InputHints.IgnoringInput);
                     await stepContext.Context.SendActivityAsync(getWindSpeedMessage, cancellationToken);
                     break;
                 case Weather.Intent.IsItRaining:
 
-                    var raining = _weatherInfoMock.Description == "raining";
+                    var raining = weatherInfo.Description == "raining";
 
                     string isItRainingMessageText;
 
@@ -104,7 +101,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                         isItRainingMessageText = "It is raining.";
                     } else
                     {
-                        isItRainingMessageText = $"It's not raining. Actually, it's {_weatherInfoMock.Description}.";
+                        isItRainingMessageText = $"It's not raining. Actually, it's {weatherInfo.Description}.";
                     }
 
                     var isItRainingMessage = MessageFactory.Text(isItRainingMessageText, isItRainingMessageText, InputHints.IgnoringInput);
@@ -112,7 +109,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     break;
                 case Weather.Intent.IsitSnowing:
 
-                    var snowing = _weatherInfoMock.Description == "snowing";
+                    var snowing = weatherInfo.Description == "snowing";
 
                     string isItSnowingMessageText;
 
@@ -122,7 +119,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     }
                     else
                     {
-                        isItSnowingMessageText = $"It's not snowing. Actually, it's {_weatherInfoMock.Description}.";
+                        isItSnowingMessageText = $"It's not snowing. Actually, it's {weatherInfo.Description}.";
                     }
 
                     var isItSnowingMessage = MessageFactory.Text(isItSnowingMessageText, isItSnowingMessageText, InputHints.IgnoringInput);
@@ -130,7 +127,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     break;
                 case Weather.Intent.IsItSunny:
 
-                    var sunny = _weatherInfoMock.Description == "sunny";
+                    var sunny = weatherInfo.Description == "sunny";
 
                     string isItSunnyMessageText;
 
@@ -140,7 +137,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
                     }
                     else
                     {
-                        isItSunnyMessageText = $"It's not sunny. Actually, it's {_weatherInfoMock.Description}.";
+                        isItSunnyMessageText = $"It's not sunny. Actually, it's {weatherInfo.Description}.";
                     }
 
                     var isItSunnyMessage = MessageFactory.Text(isItSunnyMessageText, isItSunnyMessageText, InputHints.IgnoringInput);

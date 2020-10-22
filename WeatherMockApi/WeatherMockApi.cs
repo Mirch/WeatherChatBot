@@ -34,12 +34,21 @@ namespace CoreBot.WeatherMockApi
 
         };
 
+        private static readonly Dictionary<string, WeatherInfo> _cityInfos;
+
         private readonly Random _random = new Random();
 
-        public WeatherInfo GetMockWeatherInfo()
+        public WeatherInfo GetMockWeatherInfo(string city)
         {
+            if(_cityInfos.ContainsKey(city))
+            {
+                return _cityInfos[city];
+            }
+
             var weather = _weatherInfo[_random.Next(_weatherInfo.Count)];
             weather.Temperature += _random.Next(11) - 5;
+
+            _cityInfos.Add(city, weather);
 
             return weather;
         }
