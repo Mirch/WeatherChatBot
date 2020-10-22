@@ -75,6 +75,15 @@ namespace Microsoft.BotBuilderSamples.Dialogs
             var weatherInfo = _weatherApi.GetMockWeatherInfo(city);
             switch (luisResult.TopIntent().intent)
             {
+                case Weather.Intent.Help:
+                    var messageText = "You can ask info about the weather the following way:\n" +
+                        "weather Paris\n" +
+                        "temperature Berlin\n" +
+                        "What's the wind speed in London?\n" +
+                        "Is it raining in New York?\n";
+                    var message = MessageFactory.Text(messageText, messageText, InputHints.IgnoringInput);
+                    await stepContext.Context.SendActivityAsync(message, cancellationToken);
+                    break;
                 case Weather.Intent.GetWeather:
                     var getWeatherMessageText = $"It's {weatherInfo.Description}, with a temerature of {weatherInfo.Temperature} degrees.";
                     var getWeatherMessage = MessageFactory.Text(getWeatherMessageText, getWeatherMessageText, InputHints.IgnoringInput);

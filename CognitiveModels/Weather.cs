@@ -24,7 +24,8 @@ namespace Luis
             GetWindSpeed, 
             IsItRaining, 
             IsitSnowing, 
-            IsItSunny, 
+            IsItSunny,
+            Help,
             None
         };
         [JsonProperty("intents")]
